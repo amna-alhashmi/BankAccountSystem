@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
     public class TransactionService {
         @Autowired
         TransactionInterface transactionInterface;
+        @Autowired
+        CustomerInterface customerInterface;
         public void addTransactionForASpecificAccount(){
             Transaction transaction=new Transaction();
             transaction.setFees(1222.1);
             transaction.setAmount(12.1);
             transaction.setActive(true);
-            transaction.setId(1);
+            Integer id = customerInterface.getCustomerId("AHD");
+            Customer customerId = customerInterface.geId(id);
+            transaction.setCustomer(customerId);
             transactionInterface.save(transaction);
         }
 }

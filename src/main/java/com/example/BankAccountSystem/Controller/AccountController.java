@@ -2,6 +2,7 @@ package com.example.BankAccountSystem.Controller;
 
 import com.example.BankAccountSystem.Models.Account;
 import com.example.BankAccountSystem.Models.Customer;
+import com.example.BankAccountSystem.Models.Transaction;
 import com.example.BankAccountSystem.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,13 @@ public class AccountController {
     public String addAccountForCustomer() {
         accountService.addAccountForCustomer();
         return "Account add successful";
+    }
+
+    @RequestMapping(value = "getAccountBalanceForSpecificAccount", method = RequestMethod.GET)
+    public Double getAccountBalanceForSpecificAccount(@RequestParam Long accountNumber) {
+        return accountService.getAccountBalanceForSpecificAccount(accountNumber);
+        //slackClient.sendMessage(studentService.formatStudentObjectForSlack(student).toString());
+
     }
         @RequestMapping(value = "AllCustomerAccount", method = RequestMethod.POST)
         public List<Account> getAllCustomerAccount(@RequestParam Long accountNumber) throws ParseException {

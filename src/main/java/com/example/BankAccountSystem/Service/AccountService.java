@@ -2,6 +2,7 @@ package com.example.BankAccountSystem.Service;
 
 import com.example.BankAccountSystem.Models.Account;
 import com.example.BankAccountSystem.Models.Customer;
+import com.example.BankAccountSystem.Models.Transaction;
 import com.example.BankAccountSystem.Repositoris.AccountInterface;
 import com.example.BankAccountSystem.Repositoris.CustomerInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class AccountService {
     }
     public List<Account> getAllCustomerAccount(Long account_number){
         return accountInterface.getAllCustomerAccount(account_number);
+    }
+    public Double getAccountBalanceForSpecificAccount(Long accountNumber){
+        return accountInterface.getAccountBalanceForSpecificAccount(accountNumber);
+
+
     }
 }

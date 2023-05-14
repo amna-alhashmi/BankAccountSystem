@@ -16,9 +16,7 @@ import org.springframework.stereotype.Service;
 
         public void addLoanApplicationForCustomer(){
             Loan loan=new Loan();
-
             loan.setAmount(255.12);
-            loan.setActive(true);
             loan.setInterest(34.1);
             Integer id = customerInterface.getCustomerId("Amna");
             Customer customerId = customerInterface.geId(id);

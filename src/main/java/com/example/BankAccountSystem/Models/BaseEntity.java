@@ -10,18 +10,18 @@ import javax.persistence.MappedSuperclass;
 import java.util.Date;
 @MappedSuperclass
 public class BaseEntity {
-    Boolean isActive;
+    String isActive;
     @CreationTimestamp
     Date createDate;
     @UpdateTimestamp
     Date updateDate;
 
-    public Boolean getActive() {
+    public String getIsActive() {
         return isActive;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
     }
 
     public Date getCreateDate() {

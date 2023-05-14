@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 
             creditCard.setCustomerName("Salama");
             creditCard.setAccountNumber(1527350123);
-            creditCard.setActive(true);
+
             creditCard.setCustomer(customerInterface.getCustomerName("Amna"));
             creditCardInterface.save(creditCard);
         }

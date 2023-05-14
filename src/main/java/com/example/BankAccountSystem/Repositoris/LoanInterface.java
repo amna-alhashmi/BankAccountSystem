@@ -11,4 +11,6 @@ import java.util.List;
 public interface LoanInterface extends CrudRepository<Loan,Integer> {
     @Query(value = "SELECT is_active from loan  where id= :loanId", nativeQuery = true)
     Boolean getStatusOfLoanApplication(@Param("loanId")Integer id);
+    @Query(value = "SELECT s.isActive from Loan s where s.customer.id= :customerId")
+    Boolean getViewStatusOfLoanApplication(@Param("customerId")Integer customerId);
 }

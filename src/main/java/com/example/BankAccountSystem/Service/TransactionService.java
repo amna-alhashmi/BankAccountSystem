@@ -6,6 +6,7 @@ import com.example.BankAccountSystem.Models.Transaction;
 import com.example.BankAccountSystem.Repositoris.AccountInterface;
 import com.example.BankAccountSystem.Repositoris.CustomerInterface;
 import com.example.BankAccountSystem.Repositoris.TransactionInterface;
+import com.example.BankAccountSystem.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +19,20 @@ import java.util.List;
         TransactionInterface transactionInterface;
         @Autowired
         AccountInterface accountInterface;
-        public void addTransactionForASpecificAccount(){
-            Transaction transaction=new Transaction();
-            transaction.setFees(123.32);
-            transaction.setAmount(10.32);
-            transaction.setActive(true);
-            Integer id = accountInterface.getAccountId(3245172901736173L);
-            Account accountId = accountInterface.geId(id);
-            transaction.setAccount(accountId);
-            transactionInterface.save(transaction);
+        public void addTransactionForASpecificAccount(TransactionRequest transactionRequest){
+            Transaction transactionInformation=new Transaction();
+            transactionInformation.setAmount(transactionRequest.getAmount());
+            transactionInformation.setIsActive(transactionRequest.getIsActive());
+            transactionInformation.setFees(transactionRequest.getFees());
+            Integer id = accountInterface.getAccountId(transactionRequest.getAccountNumber());
+            Account accountId = accountInterface.findById(id).get();
+            transactionInformation.setAccount(accountId);
+            Double transactionAmount= transactionRequest.getAmount();
+            Double accountBalance=accountId.getBalance();
+            Double newBalance=accountBalance-transactionAmount;
+            accountId.setBalance(newBalance);
+            accountInterface.save(accountId);
+            transactionInterface.save(transactionInformation);
         }
         public Transaction getTransactionById(Integer transactionId){
             Transaction transaction=transactionInterface.getTransactionById(transactionId);

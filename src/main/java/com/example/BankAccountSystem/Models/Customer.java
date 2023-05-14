@@ -16,6 +16,7 @@ public class Customer extends BaseEntity{
     String gender;
     Integer phoneNumber;
 
+
     public Integer getId() {
         return id;
     }

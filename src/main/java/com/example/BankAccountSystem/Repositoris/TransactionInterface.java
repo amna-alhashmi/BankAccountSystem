@@ -1,5 +1,6 @@
 package com.example.BankAccountSystem.Repositoris;
 
+import com.example.BankAccountSystem.Models.Account;
 import com.example.BankAccountSystem.Models.Customer;
 import com.example.BankAccountSystem.Models.Transaction;
 import org.springframework.data.jpa.repository.Query;
@@ -13,4 +14,5 @@ public interface TransactionInterface extends CrudRepository<Transaction,Integer
     Transaction getTransactionById(@Param("transactionId")Integer transactionId);
     @Query(value = "SELECT s From Transaction s WHERE s.account.id = :accountId")
     List<Transaction> getTransactionByAccountId(@Param("accountId") Integer accountId);
+    List<Transaction>findByAccount(Account account);
 }

@@ -23,6 +23,8 @@ public interface AccountInterface extends CrudRepository<Account,Integer> {
     Account geId(@Param("AccountId") Integer AccountId);
     @Query(value ="SELECT s.balance from Account s where s.accountNumber= :AccountNumber")
     Double getAccountBalanceForSpecificAccount(@Param("AccountNumber") Long AccountNumber);
+    @Query(value = "SELECT s FROM Account s WHERE s.customer.id= :CustomerId")
+    List<Account> getCustomerAccountInformationByCustomerId(@Param("CustomerId")Integer id);
 //    @Query(value="SELECT id from customer  where customer_name= :customerName", nativeQuery = true)
 //    Integer getCustomerId(@Param("customerName") String customer_name);
 }

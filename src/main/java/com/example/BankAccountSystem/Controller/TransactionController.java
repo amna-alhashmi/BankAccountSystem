@@ -1,13 +1,11 @@
 package com.example.BankAccountSystem.Controller;
 
 import com.example.BankAccountSystem.Models.Transaction;
+import com.example.BankAccountSystem.RequestObject.TransactionRequest;
 import com.example.BankAccountSystem.Service.CustomerService;
 import com.example.BankAccountSystem.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -18,8 +16,8 @@ import java.util.List;
         @Autowired
         TransactionService transactionService;
         @RequestMapping(value = "TransactionForSpecificAccount", method = RequestMethod.POST)
-        public String addTransactionForASpecificAccount() {
-            transactionService.addTransactionForASpecificAccount();
+        public String addTransactionForASpecificAccount(@RequestBody TransactionRequest transactionRequest) {
+            transactionService.addTransactionForASpecificAccount(transactionRequest);
 
             return "Transaction add successful";
         }

@@ -1,5 +1,6 @@
 package com.example.BankAccountSystem.Repositoris;
 
+import com.example.BankAccountSystem.Models.Account;
 import com.example.BankAccountSystem.Models.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,8 @@ public interface CustomerInterface extends JpaRepository<Customer,Integer> {
     Customer geId(@Param("customerId") Integer customerId);
     @Query(value = "SELECT s FROM Customer s WHERE s.id= :CustomerId")
     Customer getCustomerById(@Param("CustomerId")Integer id);
+
+//    @Query(value = "SELECT s FROM Account s WHERE s.customer.id= :CustomerId")
+//    List<Customer> getCustomerAccountInformationByCustomerId(@Param("CustomerId")Integer id);
 
 }

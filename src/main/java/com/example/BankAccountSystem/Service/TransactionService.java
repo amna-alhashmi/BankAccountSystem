@@ -20,10 +20,11 @@ import java.util.List;
         @Autowired
         AccountInterface accountInterface;
         public void addTransactionForASpecificAccount(TransactionRequest transactionRequest){
+            Double feesAmount=0.05;
             Transaction transactionInformation=new Transaction();
             transactionInformation.setAmount(transactionRequest.getAmount());
+            transactionInformation.setFees(transactionRequest.getAmount()*feesAmount);
             transactionInformation.setIsActive(transactionRequest.getIsActive());
-            transactionInformation.setFees(transactionRequest.getFees());
             Integer id = accountInterface.getAccountId(transactionRequest.getAccountNumber());
             Account accountId = accountInterface.findById(id).get();
             transactionInformation.setAccount(accountId);

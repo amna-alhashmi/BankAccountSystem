@@ -15,4 +15,6 @@ public interface TransactionInterface extends CrudRepository<Transaction,Integer
     @Query(value = "SELECT s From Transaction s WHERE s.account.id = :accountId")
     List<Transaction> getTransactionByAccountId(@Param("accountId") Integer accountId);
     List<Transaction>findByAccount(Account account);
+    @Query (value = "SELECT t FROM Transaction t")
+    List<Transaction> getAllTransaction();
 }

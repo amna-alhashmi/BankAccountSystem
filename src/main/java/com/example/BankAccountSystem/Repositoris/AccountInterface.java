@@ -14,8 +14,8 @@ import java.util.List;
 
 @Repository
 public interface AccountInterface extends CrudRepository<Account,Integer> {
-    @Query(value = "SELECT s FROM Account s where s.accountNumber= :accountnumber")
-    List<Account> getAllCustomerAccount(@Param("accountnumber")Long accountnumber);
+    @Query(value = "SELECT s FROM Account s where s.accountNumber= :accountNumber")
+    List<Account> getAllCustomerAccount(@Param("accountNumber")Long accountNumber);
     @Query(value="SELECT id from account  where account_number= :accountNumber", nativeQuery = true)
     Integer getAccountId(@Param("accountNumber") Long account_number);
 

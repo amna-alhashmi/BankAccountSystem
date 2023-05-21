@@ -21,7 +21,7 @@ public interface CustomerInterface extends JpaRepository<Customer,Integer> {
     @Query(value = "SELECT s FROM Customer s WHERE s.id= :CustomerId")
     Customer getCustomerById(@Param("CustomerId")Integer id);
 
-//    @Query(value = "SELECT s FROM Account s WHERE s.customer.id= :CustomerId")
-//    List<Customer> getCustomerAccountInformationByCustomerId(@Param("CustomerId")Integer id);
+    @Query(value = "SELECT s FROM Account s WHERE s.customer.id= :CustomerId")
+    List<Customer> getCustomerAccountInformationByCustomerId(@Param("CustomerId")Integer id);
 
 }

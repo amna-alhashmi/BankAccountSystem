@@ -35,14 +35,14 @@ public class ReportService {
             Double amount = transaction.getAmount();
             Long accountNumber = transaction.getAccount().getAccountNumber();
             String isActive=transaction.getIsActive();
-            Double
 
-            SchoolDTO studentDTO = new SchoolDTO(schoolName, studentName, rollNumber);
-            studentssList.add(studentDTO);
+
+            ReportForAllTransaction studentDTO = new ReportForAllTransaction(amount, accountNumber, isActive);
+            studentDTO.add(studentDTO);
         }
         File file = new File("C:/Users/user008/Downloads/BankAccountSystem/BankAccountSystem/src/main/resources/ReportForAllTransaction.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(studentssList);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(TransactionsList);
         Map<String, Object> paramters = new HashMap<>();
         paramters.put("CreatedBy", "Amna");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, paramters, dataSource);

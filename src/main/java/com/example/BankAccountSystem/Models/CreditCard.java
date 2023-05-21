@@ -19,5 +19,5 @@ public class CreditCard extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "Customer_id",referencedColumnName = "id")
     Customer customer;
-  
+
 }

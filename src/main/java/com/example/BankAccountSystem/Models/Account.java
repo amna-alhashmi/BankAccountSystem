@@ -20,5 +20,5 @@ public class Account extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "Customer_id",referencedColumnName = "id")
     Customer customer;
-    
+
 }

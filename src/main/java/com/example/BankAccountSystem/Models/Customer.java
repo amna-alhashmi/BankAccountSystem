@@ -20,5 +20,5 @@ public class Customer extends BaseEntity{
     String gender;
     Integer phoneNumber;
 
-    
+
 }

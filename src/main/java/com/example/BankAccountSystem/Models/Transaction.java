@@ -1,11 +1,15 @@
 package com.example.BankAccountSystem.Models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Setter
+@Getter
 @Table(name = "BankTransction")
 public class Transaction extends BaseEntity{
     @Id

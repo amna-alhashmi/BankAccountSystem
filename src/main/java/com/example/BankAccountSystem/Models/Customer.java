@@ -23,8 +23,12 @@ public class Customer extends BaseEntity{
     @NotNull
     @Size(max=3,min=50)
     String customerName;
+    @NotNull
     String email;
+    @NotNull
     String gender;
+    @NotNull
+    @Size(max =8)
     Integer phoneNumber;
 
 

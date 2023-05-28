@@ -20,6 +20,7 @@ public class CreditCard extends BaseEntity{
     @NotNull
     @Size(min = 3,max = 50)
     String customerName;
+    @NotNull
     Integer accountNumber;
     @ManyToOne
     @JoinColumn(name = "Customer_id",referencedColumnName = "id")

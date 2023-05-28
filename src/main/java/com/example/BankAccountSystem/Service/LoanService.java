@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
         @Autowired
         CustomerInterface customerInterface;
 
-        public void addLoanApplicationForCustomer(){
-            Loan loan=new Loan();
-            loan.setAmount(255.12);
-            loan.setInterest(34.1);
+        public void addLoanApplicationForCustomer(Loan loan){
+            Loan loan1=new Loan();
+            loan1.setAmount(loan.getAmount());
+            loan1.setInterest(loan.getInterest());
             Integer id = customerInterface.getCustomerId("Amna");
             Customer customerId = customerInterface.geId(id);
-            loan.setCustomer(customerId);
-            loanInterface.save(loan);
+            loan1.setCustomer(customerId);
+            loanInterface.save(loan1);
         }
     public Boolean getStatusOfLoanApplication(Integer loanId){
     return loanInterface.getStatusOfLoanApplication(loanId);

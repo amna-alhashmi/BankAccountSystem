@@ -5,8 +5,10 @@ import com.example.BankAccountSystem.RequestObject.TransactionRequest;
 import com.example.BankAccountSystem.Service.CustomerService;
 import com.example.BankAccountSystem.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import java.util.List;
         @Autowired
         TransactionService transactionService;
         @RequestMapping(value = "TransactionForSpecificAccount", method = RequestMethod.POST)
-        public String addTransactionForASpecificAccount(@RequestBody TransactionRequest transactionRequest) {
+        public String addTransactionForASpecificAccount(@RequestBody @Valid TransactionRequest transactionRequest, BindingResult bindingResult) {
             transactionService.addTransactionForASpecificAccount(transactionRequest);
 
             return "Transaction add successful";

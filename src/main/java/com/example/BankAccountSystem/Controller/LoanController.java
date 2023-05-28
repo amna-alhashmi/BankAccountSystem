@@ -19,8 +19,8 @@ import java.util.List;
         @Autowired
         LoanService loanService;
         @RequestMapping(value = "LoanApplicationForCustomer", method = RequestMethod.POST)
-        public String addLoanApplicationForCustomer() {
-            loanService.addLoanApplicationForCustomer();
+        public String addLoanApplicationForCustomer(Loan loan) {
+            loanService.addLoanApplicationForCustomer(loan);
 
             return "Loan add successful";
         }

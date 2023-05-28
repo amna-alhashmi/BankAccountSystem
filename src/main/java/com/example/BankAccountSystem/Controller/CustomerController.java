@@ -2,6 +2,7 @@ package com.example.BankAccountSystem.Controller;
 
 import com.example.BankAccountSystem.Models.Account;
 import com.example.BankAccountSystem.Models.Customer;
+import com.example.BankAccountSystem.Models.Loan;
 import com.example.BankAccountSystem.Models.Transaction;
 import com.example.BankAccountSystem.Service.AccountService;
 import com.example.BankAccountSystem.Service.CustomerService;
@@ -45,8 +46,8 @@ import java.util.List;
         return account;
     }
     @RequestMapping(value = "LoanApplicationForCustomer", method = RequestMethod.POST)
-    public String addLoanApplicationForCustomer() {
-        loanService.addLoanApplicationForCustomer();
+    public String addLoanApplicationForCustomer(Loan loan) {
+        loanService.addLoanApplicationForCustomer(loan);
 
         return "Loan add successful";
     }

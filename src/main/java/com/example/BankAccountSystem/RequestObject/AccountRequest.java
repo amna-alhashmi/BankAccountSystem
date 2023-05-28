@@ -17,6 +17,7 @@ public class AccountRequest {
     @NotNull
     @Size(min=2, max = 50)
     String customerName;
+    @NotNull
     String isActive;
 
     public Double getBalance() {

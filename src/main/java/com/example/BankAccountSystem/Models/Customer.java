@@ -19,6 +19,9 @@ public class Customer extends BaseEntity{
     @NotNull
     Integer id;
     @Column(name="customer_name")
+
+    @NotNull
+    @Size(max=3,min=50)
     String customerName;
     String email;
     String gender;

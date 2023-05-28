@@ -7,8 +7,10 @@ import com.example.BankAccountSystem.RequestObject.AccountRequest;
 import com.example.BankAccountSystem.Service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class AccountController {
     AccountService accountService;
 
     @RequestMapping(value = "AccountForCustomer", method = RequestMethod.POST)
-    public String addAccountForCustomer(@RequestBody AccountRequest accountRequest) {
+    public String addAccountForCustomer(@RequestBody @Valid AccountRequest accountRequest, BindingResult bindingResult) {
         accountService.addAccountForCustomer(accountRequest);
         return "Account add successful";
     }

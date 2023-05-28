@@ -5,11 +5,10 @@ import com.example.BankAccountSystem.Models.Transaction;
 import com.example.BankAccountSystem.Service.LoanService;
 import com.example.BankAccountSystem.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -19,7 +18,7 @@ import java.util.List;
         @Autowired
         LoanService loanService;
         @RequestMapping(value = "LoanApplicationForCustomer", method = RequestMethod.POST)
-        public String addLoanApplicationForCustomer(Loan loan) {
+        public String addLoanApplicationForCustomer(@RequestBody @Valid Loan loan, BindingResult bindingResult) {
             loanService.addLoanApplicationForCustomer(loan);
 
             return "Loan add successful";

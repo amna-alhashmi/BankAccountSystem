@@ -4,12 +4,18 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
+
 
 @Data
 public class TransactionRequest {
+    @NotNull
     Double amount;
+    @NotNull
     Long accountNumber;
+    @NotNull
     String isActive;
+    @NotNull
     Double fees;
 
     public Double getAmount() {

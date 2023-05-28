@@ -8,8 +8,10 @@ import com.example.BankAccountSystem.Service.CustomerService;
 import com.example.BankAccountSystem.Service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 
@@ -25,7 +27,7 @@ import java.util.List;
     LoanService loanService;
 
     @RequestMapping(value = "PersonalInformation", method = RequestMethod.POST)
-    public String addPersonalInformation(@RequestBody Customer customer) {
+    public String addPersonalInformation(@RequestBody @Valid Customer customer, BindingResult bindingResult) {
         customerService.addPersonalInformation(customer);
 
         return "Customer add successful";

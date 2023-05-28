@@ -14,14 +14,14 @@ import org.springframework.stereotype.Service;
         CreditCardInterface creditCardInterface;
         @Autowired
         CustomerInterface customerInterface;
-        public void addCreditCardForCustomer(){
-            CreditCard creditCard=new CreditCard();
+        public void addCreditCardForCustomer(CreditCard creditCard){
+            CreditCard creditCard1=new CreditCard();
 
-            creditCard.setCustomerName("Salama");
-            creditCard.setAccountNumber(1527350123);
+            creditCard1.setCustomerName(creditCard.getCustomerName());
+            creditCard1.setAccountNumber(creditCard.getAccountNumber());
 
-            creditCard.setCustomer(customerInterface.getCustomerName("Amna"));
-            creditCardInterface.save(creditCard);
+            creditCard1.setCustomer(customerInterface.getCustomerName(creditCard.getCustomerName()));
+            creditCardInterface.save(creditCard1);
         }
         public Boolean getStatusOfCreditCardApplication(Integer creditCardId){
             return creditCardInterface.getStatusOfCreditCardApplication(creditCardId);
